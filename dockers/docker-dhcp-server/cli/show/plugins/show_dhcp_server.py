@@ -58,7 +58,7 @@ def info(db, dhcp_interface, with_customized_options):
         entry = dbconn.get_all("CONFIG_DB", key)
         interface = key.split("|")[1]
         table.append([interface, entry["mode"], entry["gateway"], entry["netmask"], entry["lease_time"], entry["state"]])
-        if with_customize_option:
+        if with_customized_options:
             table[-1].append(entry["customized_options"])
     print(tabulate(table, headers=headers))
 
