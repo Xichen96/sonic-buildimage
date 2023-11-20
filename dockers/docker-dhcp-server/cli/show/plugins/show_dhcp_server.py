@@ -46,7 +46,7 @@ def lease(db, dhcp_interface):
 @click.argument('dhcp_interface', required=False)
 @click.option('--with_customized_options', default=False, is_flag=True)
 @clicommon.pass_db
-def info(db, dhcp_interface, with_customize_option):
+def info(db, dhcp_interface, with_customized_options):
     if not dhcp_interface:
         dhcp_interface = "*"
     headers = ["Interface", "Mode", "Gateway", "Netmask", "Lease Time(s)", "IP Bind"]
