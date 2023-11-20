@@ -51,7 +51,7 @@ def info(db, dhcp_interface, with_customized_options):
         dhcp_interface = "*"
     headers = ["Interface", "Mode", "Gateway", "Netmask", "Lease Time(s)", "IP Bind"]
     if with_customized_options:
-        headers.append("Customize Option")
+        headers.append("Customized Options")
     table = []
     dbconn = db.db
     for key in dbconn.keys("CONFIG_DB", "DHCP_SERVER_IPV4|" + dhcp_interface):
