@@ -55,3 +55,30 @@ Vlan1001|<Unknown>  10:70:fd:b6:13:02  192.168.0.3  2023-03-01 03:16:21  2023-03
         result = runner.invoke(show_dhcp_server.dhcp_server.commands["ipv4"].commands["lease"], ["Vlan1001"], obj=db)
         assert result.exit_code == 0, "exit code: {}, Exception: {}, Traceback: {}".format(result.exit_code, result.exception, result.exc_info)
         assert result.stdout == expected_stdout
+
+    def test_show_dhcp_server_ipv4_info_without_input(self, mock_db):
+        expected_stdout = """"""
+        runner = CliRunner()
+        db = clicommon.Db()
+        db.db = mock_db
+        result = runner.invoke(show_dhcp_server.dhcp_server.commands["ipv4"].commands["info"], [], obj=db)
+        assert result.exit_code == 0, "exit code: {}, Exception: {}, Traceback: {}".format(result.exit_code, result.exception, result.exc_info)
+        assert result.stdout == expected_stdout
+
+    def test_show_dhcp_server_ipv4_info_with_dhcpintf(self, mock_db):
+        expected_stdout = """"""
+        runner = CliRunner()
+        db = clicommon.Db()
+        db.db = mock_db
+        result = runner.invoke(show_dhcp_server.dhcp_server.commands["ipv4"].commands["info"], ["Vlan200"], obj=db)
+        assert result.exit_code == 0, "exit code: {}, Exception: {}, Traceback: {}".format(result.exit_code, result.exception, result.exc_info)
+        assert result.stdout == expected_stdout
+
+    def test_show_dhcp_server_ipv4_info_with_option(self, mock_db):
+        expected_stdout = """"""
+        runner = CliRunner()
+        db = clicommon.Db()
+        db.db = mock_db
+        result = runner.invoke(show_dhcp_server.dhcp_server.commands["ipv4"].commands["info"], ["--with_customized_options"], obj=db)
+        assert result.exit_code == 0, "exit code: {}, Exception: {}, Traceback: {}".format(result.exit_code, result.exception, result.exc_info)
+        assert result.stdout == expected_stdout

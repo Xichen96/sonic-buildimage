@@ -9,10 +9,25 @@
         ],
         "state": "enabled"
     },
+    "DHCP_SERVER_IPV4|Vlan200": {
+        "gateway": "100.1.1.1",
+        "lease_time": "3600",
+        "mode": "PORT",
+        "netmask": "255.255.255.0",
+        "customized_options": [
+            "option60,option64"
+        ],
+        "state": "enabled"
+    },
     "DHCP_SERVER_IPV4_CUSTOMIZED_OPTIONS|option60": {
         "id": "60",
         "type": "string",
         "value": "dummy_value"
+    },
+    "DHCP_SERVER_IPV4_CUSTOMIZED_OPTIONS|option64": {
+        "id": "64",
+        "type": "string",
+        "value": "whatever"
     },
     "DHCP_SERVER_IPV4_RANGE|range1": {
         "ranges": [
