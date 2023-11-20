@@ -57,7 +57,12 @@ Vlan1001|<Unknown>  10:70:fd:b6:13:02  192.168.0.3  2023-03-01 03:16:21  2023-03
         assert result.stdout == expected_stdout
 
     def test_show_dhcp_server_ipv4_info_without_input(self, mock_db):
-        expected_stdout = """"""
+        expected_stdout = """\
+Interface    Mode    Gateway    Netmask          Lease Time(s)  IP Bind
+-----------  ------  ---------  -------------  ---------------  ---------
+Vlan100      PORT    100.1.1.1  255.255.255.0             3600  enabled
+Vlan200      PORT    100.1.1.1  255.255.255.0             3600  enabled
+"""
         runner = CliRunner()
         db = clicommon.Db()
         db.db = mock_db
@@ -66,7 +71,11 @@ Vlan1001|<Unknown>  10:70:fd:b6:13:02  192.168.0.3  2023-03-01 03:16:21  2023-03
         assert result.stdout == expected_stdout
 
     def test_show_dhcp_server_ipv4_info_with_dhcpintf(self, mock_db):
-        expected_stdout = """"""
+        expected_stdout = """\
+Interface    Mode    Gateway    Netmask          Lease Time(s)  IP Bind
+-----------  ------  ---------  -------------  ---------------  ---------
+Vlan200      PORT    100.1.1.1  255.255.255.0             3600  enabled
+"""
         runner = CliRunner()
         db = clicommon.Db()
         db.db = mock_db
@@ -75,7 +84,12 @@ Vlan1001|<Unknown>  10:70:fd:b6:13:02  192.168.0.3  2023-03-01 03:16:21  2023-03
         assert result.stdout == expected_stdout
 
     def test_show_dhcp_server_ipv4_info_with_option(self, mock_db):
-        expected_stdout = """"""
+        expected_stdout = """\
+Interface    Mode    Gateway    Netmask          Lease Time(s)  IP Bind    Customized Options
+-----------  ------  ---------  -------------  ---------------  ---------  --------------------
+Vlan100      PORT    100.1.1.1  255.255.255.0             3600  enabled    option60
+Vlan200      PORT    100.1.1.1  255.255.255.0             3600  enabled    option60,option64
+"""
         runner = CliRunner()
         db = clicommon.Db()
         db.db = mock_db
